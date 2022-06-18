@@ -1,7 +1,6 @@
 ---
 title: Quick Sort
-parent: Sorting
-nav_order: 3
+parent: Algorithms
 has_children: false
 ---
 ## Quick Sort
