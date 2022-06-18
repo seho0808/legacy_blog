@@ -15,6 +15,8 @@ rand()%100-50; // yields a number from -50~50
 ```
 ## Here is a function
 ```cpp
+// generates an integer from start to end.
+// start and end cannot be negative integers.
 int rand_range(int start, int end) {
   return end-rand()%(start+1);
 }
