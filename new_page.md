@@ -4,5 +4,4 @@ has_children: true
 nav_order: 2
 ---
 
-## Quick Sort
-좋습니다.
+## Sort of a sort of a Sorts
