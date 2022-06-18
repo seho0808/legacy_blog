@@ -1,4 +1,8 @@
+---
+title: Sorting
+has_children: true
+nav_order: 1
+---
+
 ## Quick Sort
-Cases
-10 20 30 40
-이건 좀 이상하다.
+좋습니다.
