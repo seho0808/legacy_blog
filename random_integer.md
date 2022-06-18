@@ -1,6 +1,6 @@
 ---
 title: Generating a Random Integer Inside a Range in C++
-parent: Algorithm Utility
+parent: Utility
 has_children: false
 ---
 ## Generating an integer within the range of [start, end] can be very simple.
