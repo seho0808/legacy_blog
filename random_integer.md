@@ -6,8 +6,8 @@ has_children: false
 ## Generating an integer
 ```cpp
 rand(); // yields a number from 0~32767
-rand()%5; // yields a number from 1~4
-rand()%10; // yields a number from 1~9
+rand()%5; // yields a number from 0~4
+rand()%10; // yields a number from 0~9
 rand()%100-50; // yields a number from -50~50
 1000-rand()%100; // yields a number from 901~1000
 10-rand()%5; // yields a number from 6~10
