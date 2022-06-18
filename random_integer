@@ -15,7 +15,7 @@ rand()%100-50; // yields a number from -50~50
 ```
 ## Here is a function
 ```cpp
-int range(int start, int end) {
+int rand_range(int start, int end) {
   return end-rand()%(start+1);
 }
 ```
