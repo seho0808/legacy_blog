@@ -1,6 +1,7 @@
 ---
 title: Algorithm Utility
-nav_order:2
+nav_order:1
+parent: Algorithm
 has_children: true
 ---
 ## Utilities for Problem Solving
