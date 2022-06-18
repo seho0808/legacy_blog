@@ -1,7 +1,7 @@
 ---
 title: Sorting
 has_children: true
-nav_order: 2
+nav_order: 3
 ---
 
-## Sort of a sort of a Sorts
+## Sorting Algorithms
