@@ -3,7 +3,7 @@ title: Generating a Random Integer Inside a Range in C++
 parent: Algorithms
 has_children: false
 ---
-## Generating an integer within the range of [start, end]
+## Generating an integer
 ```cpp
 rand(); // yields a number from 0~32767
 rand()%5; // yields a number from 1~4
