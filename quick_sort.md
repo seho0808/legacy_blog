@@ -12,7 +12,10 @@ has_children: false
 
 목차
 1. 시간 복잡도
-	1. [Average-Case Time Complexity 증명](#ac_proof)
+	1. [Average-Case 증명](#ac_proof)
+	2. Best-Case 증명
+	3. Worst-Case 증명
+	4. 참고
 2. [공간 복잡도](#space_complexity)
 3. [최적화 완료된 알고리즘](#3)
 4. 최적화 순서
@@ -55,11 +58,19 @@ $$\log_{4/3}n = h$$
 나머지 값들을 뽑을 확률이 동일하기 때문에, 각 level 마다 절반이 1과 n-1로 나누어지는 최악의 케이스와 나머지 절반은 3/4와 1/4로 나누어지는
 최악의 케이스를 볼 때, 깊이가 딱 기존의 두 배가 되기 때문에, 트리의 깊이는 평균적으로 $2\log_{4/3}n$가 된다.
 
-각 파티션 마다 O(n)번 도는 것이 worst-case이기에, $O(2n\log_{4/3}n)≈O(n\log_2n)$으로 본다. $\blacksquare$
+각 파티션 마다 O(n)번 도는 것이 worst-case이기에, $O(2n\log_{4/3}n)≈O(n\log_2n)$으로 본다. $\square$
+
+### Best-Case 증명
+선택한 pivot이 항상 가운데에 오고 나머지가 왼쪽 오른쪽에 절반씩 나누어지는 상황이 계속 반복되면 된다.
+첫 파티션 완료 시점에 양쪽에 $n/2$씩 2개가 있으므로 이런식으로 각 level 마다 총 연산 개수를 계산하면 각 n씩이다.
+(예를 들어서 9/10과 1/10으로 나뉘면 그래도 $9/10n + 1/10n = 1$) 그리고 level의 깊이는 $\log_2(n)$ 이기에
+Best-Case는 O($n\log(n)$)이다.
+### Worst-Case 증명
+계속 1과 n-1로 쪼개지는 상황이면 O($n^2$)이다.
 
 ### 참고
 
-- 위의 Average-Case 증명은 [위키피디아](https://en.wikipedia.org/wiki/Quicksort)에서 읽은 증명임. 아래는 원문.
+- 위의 Average-Case 증명은 [위키피디아](https://en.wikipedia.org/wiki/Quicksort)에서 읽은 증명임. 아래는 Average-Case 원문.
 
 
 ```
