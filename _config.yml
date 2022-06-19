@@ -1,6 +1,6 @@
 remote_theme: just-the-docs/just-the-docs
 title: Some Tech Blog
-color_scheme: "light"
+color_scheme: "dark"
 compress_html:
   ignore:
     envs: all
