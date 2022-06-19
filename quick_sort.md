@@ -79,8 +79,8 @@ int main() {
 
 ## 최적화 순서
 ### 1. 첫 어프로치
-파티션 부분만 살펴본다. 랜덤으로 하나의 element를 가장 왼쪽과 교환한 후에
-교환한 
+파티션 부분만 살펴본다. 랜덤으로 하나의 element를 가장 왼쪽과 교환한다.
+그리고 왼쪽에서 올라가는 i를 최대한 올려주고 j는 최대한 내려준다.
 ```cpp
 int partition(vector<int> &v, int left, int right) {
     int pivot_index = left + rand()%(right-left+1);
@@ -89,11 +89,11 @@ int partition(vector<int> &v, int left, int right) {
     int j = right;
     swap(v, pivot_index, left);
     while (i < j) {
-        while (pivot < v[j]) {
-            j--;
-        }
         while (pivot > v[i]) {
             i++;
+        }
+        while (pivot < v[j]) {
+            j--;
         }
         swap(v, i, j);
     }
@@ -103,6 +103,6 @@ int partition(vector<int> &v, int left, int right) {
 }
 
 ```
-
+이 코드의 반례는 [5, 4, 3, 2, 1]이다. 
 
 
