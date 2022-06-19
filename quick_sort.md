@@ -7,6 +7,14 @@ has_children: false
 
 이 글은 퀵정렬의 원리에 대해 설명하지 않는다. 최적화와 구현 방식들에 대해서만 이야기한다.
 
+## 시간 복잡도
+
+
+## 공간 복잡도
+각 파티션 마다 모두 하나의 배열을 포인터로 레퍼런싱하기 때문에 하나의 배열의 메모리 O(n)과 
+임시저장 메모리인 스택에 쌓이는 재귀함수들의 메모리 O(log(n))을 합쳐서 O(n+log(n)) = O(n)이 된다.
+[스택 참고](https://velog.io/@wonhee010/%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B5%AC%EC%A1%B0-feat.-%EC%9E%AC%EA%B7%80-vs-%EB%B0%98%EB%B3%B5%EB%AC%B8)
+
 ## 최적화 완료된 알고리즘
 ```cpp
 #include <vector>
@@ -309,6 +317,25 @@ void quickSort(int i, int j)
 }
 ```
 ### 3. 메모리를 사용하는 퀵소트
-우리가 구현한 퀵소트는 메모리를 n + log(n)만큼 사용한다. (https://stackoverflow.com/questions/29738135/memory-complexity-of-quicksort)
-하지만, 메모리를 3n만큼 써서 더 편하게 구현할 수 있다.
+우리가 구현한 퀵소트는 메모리를 n + log(n)만큼 사용한다. 아래 알고리즘은 2n + log(n)정도 사용하는 것으로 보여진다.
+```
+//psuedocode
+quick_sort(int left, int right) {
+	pivot = random(left, right) // random from left to right
+	int[] less
+	int[] same
+	int[] larger
+	for i in list[left, right]:
+		if (list[i] > pivot):
+			larger.append(i)
+		else if (list[i] < pivot):
+			smaller.append(i)
+		else:
+			same.append(i)
+	temp = merge(less, same, larger)
+	list.replace(temp)
+	quick_sort(pivot+1, right)
+	quick_sort(left, pivot-1)
+}
+```
 
