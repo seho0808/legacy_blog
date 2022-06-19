@@ -107,8 +107,8 @@ int partition(vector<int> &v, int left, int right) {
 이 코드의 반례는 [5, 4, 3, 2, 1]이다. 첫 루프에서 2를 pivot으로 잡으면
 [2, 4, 3, 5, 1]이 된다. 여기서 i가 2에서 멈추고 j는 1에서 멈추기에
 pivot이 바뀌어버린다. 그러면 [1, 4, 3, 5, 2]가 된다. pivot이 바뀌면
-마지막에 18~19줄에서 while loop이 모두 끝나고 j랑 pivot이랑 스왑될 때 left에 다른 숫자가
-들어가 있어서 오류가 난다. 18~19를 swap(v, left, j)로 바꾸어도 마찬가지이다.
+마지막에 18\~19줄에서 while loop이 모두 끝나고 j랑 pivot이랑 스왑될 때 left에 다른 숫자가
+들어가 있어서 오류가 난다. 18\~19를 swap(v, left, j)로 바꾸어도 마찬가지이다.
 pivot을 left에서 빼내면 안되기에 left+1을 하는 방법을 생각해볼 수 있다.
 
 ### 2. left+1
@@ -167,7 +167,6 @@ i를 증가시킬 때 pivot과 같은 값들은 패스하도록 설계하면 2�
 배열 끝보다 더 많이 넘어가서 out of bounds가 된다. 그래서 i < j를 붙여주어야한다.
 
 ### 4. i < j 추가
-
 ```cpp
 int partition(vector<int> &v, int left, int right) {
     int pivot_index = left + rand()%(right-left+1);
@@ -192,9 +191,40 @@ int partition(vector<int> &v, int left, int right) {
 }
 ```
 이렇게 i < j를 추가해주면 이제 모든 logical error은 통과이다.
+흥미롭게도, pivot을 왼쪽으로 안잡고 맨 오른쪽으로 잡게되면, 반대로 `while(i < j && pivot <= v[j]) j--;`를 해주어야한다.
+즉, decrment j 부분에 condition을 넣어주어야한다.
 
 ### 5. i와 j 순서 바꿔주기
-
+```cpp
+int partition(vector<int> &v, int left, int right) {
+    int pivot_index = left + rand()%(right-left+1);
+    int pivot = v[pivot_index];
+    int i = left+1;
+    int j = right;
+    swap(v, pivot_index, left);
+    while (i < j) {
+        while (pivot < v[j]) {
+            j--;
+        }
+        while (i < j && pivot >= v[i]) {
+            i++;
+        }
+        if (i < j) {
+            swap(v, i, j);
+        }
+    }
+    v[left] = v[j];
+    v[j] = pivot;
+    return j;
+}
+```
+이렇게 increment i 와 decrement j의 순서를 바꾸어주면 효율이 아주 조금 더 개선 된다.
+예시 케이스는 [30, 20, 50, 60, 70] 이다. i가 단 한번 덜 비교 대상이 된다.
+효율 개선량은 분기를 트리로 보았을 때 분기 노드 총 개수이다. 노드 총 개수는 평균적으로 $n-1$에 가깝다.
+이유를 알아보자.
+Complete Binary Tree는 $2^{h-1}$의 노드 수를 가진다. 우리는 Quick Sort가 랜덤으로 pivot을 취하면
+평균적으로 Binary Tree의 분기가 생성된다고 볼 수 있다. 그렇기에, 평균적으로 노드 총 개수는 $2^{\log_2(n)}-1 = n-1$이고,
+이 개수만큼 비교 가 줄어들 수 있다.
 
 
 
