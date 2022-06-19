@@ -5,10 +5,23 @@ has_children: false
 ---
 ## Quick Sort (퀵소트 / 퀵정렬)
 
-이 글은 퀵정렬의 원리에 대해 설명하지 않는다. 최적화와 구현 방식들에 대해서만 이야기한다.
+이 글은 퀵정렬의 원리에 대해 설명하지 않는다. 복잡도와 최적화와 구현 방식들에 대해서만 이야기한다.
 
 ## 시간 복잡도
 
+
+
+
+참고1: https://en.wikipedia.org/wiki/Quicksort => 원래 소스가 어디인지 찾기 힘들어서 그냥 위키피디아 그대로 참조.
+>Average-case analysis
+To sort an array of n distinct elements, quicksort takes O(n log n) time in expectation, averaged over all n! permutations of n elements with equal probability. We list here three common proofs to this claim providing different insights into quicksort's workings.
+
+>Using percentiles
+If each pivot has rank somewhere in the middle 50 percent, that is, between the 25th percentile and the 75th percentile, then it splits the elements with at least 25% and at most 75% on each side. If we could consistently choose such pivots, we would only have to split the list at most ${\displaystyle \log _{4/3}n}$ times before reaching lists of size 1, yielding an O(n log n) algorithm.
+
+>When the input is a random permutation, the pivot has a random rank, and so it is not guaranteed to be in the middle 50 percent. However, when we start from a random permutation, in each recursive call the pivot has a random rank in its list, and so it is in the middle 50 percent about half the time. That is good enough. Imagine that a coin is flipped: heads means that the rank of the pivot is in the middle 50 percent, tail means that it isn't. Now imagine that the coin is flipped over and over until it gets k heads. Although this could take a long time, on average only 2k flips are required, and the chance that the coin won't get k heads after 100k flips is highly improbable (this can be made rigorous using Chernoff bounds). By the same argument, Quicksort's recursion will terminate on average at a call depth of only ${\displaystyle 2\log _{4/3}n}2$. But if its average call depth is O(log n), and each level of the call tree processes at most n elements, the total amount of work done on average is the product, O(n log n). The algorithm does not have to verify that the pivot is in the middle half—if we hit it any constant fraction of the times, that is enough for the desired complexity.
+
+참고2(아직 안읽었는데 일단 넣음): https://www.khanacademy.org/computing/computer-science/algorithms/quick-sort/a/analysis-of-quicksort
 
 ## 공간 복잡도
 각 파티션 마다 모두 하나의 배열을 포인터로 레퍼런싱하기 때문에 하나의 배열의 메모리 O(n)과 
