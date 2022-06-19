@@ -308,7 +308,7 @@ void quickSort(int i, int j)
 	quickSort(left,j);
 }
 ```
-### 3. 메모리 사용 늘리기
-우리가 구현한 퀵소트는 메모리를 log(n)만큼 쓴다. => 왜냐하면 
-하지만, 
+### 3. 메모리를 사용하는 퀵소트
+우리가 구현한 퀵소트는 메모리를 n + log(n)만큼 사용한다. (https://stackoverflow.com/questions/29738135/memory-complexity-of-quicksort)
+하지만, 메모리를 3n만큼 써서 더 편하게 구현할 수 있다.
 
