@@ -226,7 +226,89 @@ Complete Binary Tree는 $2^{h-1}$의 노드 수를 가진다. 우리는 Quick So
 평균적으로 Binary Tree의 분기가 생성된다고 볼 수 있다. 그렇기에, 평균적으로 노드 총 개수는 $2^{\log_2(n)}-1 = n-1$이고,
 이 개수만큼 비교 가 줄어들 수 있다.
 
+### 6. swap에 있는 i < j 제거
+```cpp
+int partition(vector<int> &v, int left, int right) {
+    int pivot_index = left + rand()%(right-left+1);
+    int pivot = v[pivot_index];
+    int i = left+1;
+    int j = right;
+    swap(v, pivot_index, left);
+    while (i < j) {
+        while (pivot < v[j]) {
+            j--;
+        }
+        while (i < j && pivot >= v[i]) {
+            i++;
+        }
+        swap(v, i, j);
+    }
+    v[left] = v[j];
+    v[j] = pivot;
+    return j;
+}
+```
+두번째 inner while loop에 i < j가 생겼기에 swap에 i < j조건문을 빼도 된다. 
+비교 연산을 많이 줄일 수 있다. 정확히는 한 번의 partition 마다 n번씩 줄일 수 있다.
+partition의 개수는 평균적으로 log(n)개니까 $n\log(n)$만큼의 비교 연산을 덜할 수 있다.
 
+## 퀵소트가 평균적으로 $n\log(n)$인 이유
+파티션 마다 n번 비교하는 건 당연할 것이다. 퀵소트는 평균적으로 파티션을 절반씩 나눈다고 볼 수 있기때문에 (정확히는 [절반, 절반]과 [한개, 전체-1] 만큼 나누는 것의
+산술 평균. => 데이터가 uniform distribution일 떄.) 트리 깊이가 log(n)정도라고 보면 nlog(n)이 된다.
 
-
+## 다른 풀이 세 가지
+### 1. pivot을 오른쪽으로 두기
+pivot을 오른쪽에 두면 위에서 쓴 조건과 반대로하면 된다. 그리고 18번 줄을 쓰든 comment되어 있는 16번 17번 줄을 쓰든 상관 없다.
+```cpp
+int partition(vector<int> &v, int left, int right) {
+    int pivot_index = left + rand()%(right-left+1);
+    int pivot = v[pivot_index];
+    int i = left;
+    int j = right;
+    swap(v, pivot_index, right);
+    while (i < j) {
+        while (pivot > v[i]) {
+            i++;
+        }
+        while (i < j && pivot <= v[j]) {
+            j--;
+        }
+        swap(v, i, j);
+    }
+    // v[left] = v[j];
+    // v[j] = pivot;
+    swap(v, right, j);
+    return j;
+}
+```
+### 2. pivot을 가운데에 냅둔 상태에서 재귀
+다른 곳에서 퍼온 코드인데, 맨 왼쪽이나 맨 오른쪽이랑 스왑을 하지 않고 돌린다는 점에서
+테스트 케이스를 생각할 때 훨씬 간단하고 좋은 알고리즘이라고 생각한다. 정확히 최적화 관점에서까지의
+시간 복잡도 차이는 모르겠다.
+```cpp
+// 출처: https://dpdpwl.tistory.com/46
+void quickSort(int i, int j)
+{
+	if(i>=j) return;
+	int pivot = quick[(i+j)/2];
+	int left = i;
+	int right = j;
+	
+	while(left<=right)
+	{
+		while(quick[left]<pivot) left++;
+		while(quick[right]>pivot) right--;
+		if(left<=right)
+		{
+			swap(quick[left],quick[right]);
+			left++; right--;
+		}
+	}
+	quickSort(i,right);
+	quickSort(left,j);
+}
+```
+### 3. 메모리 사용 늘리기
+우리가 구현한 퀵소트는 메모리를 log(n)만큼 쓴다. => 왜냐하면 
+하지만, 
 
