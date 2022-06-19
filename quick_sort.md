@@ -10,7 +10,7 @@ has_children: false
 
 
 
-목차  
+목차
 1. 시간 복잡도
 	1. [Average-Case Time Complexity 증명](#ac_proof)
 2. [공간 복잡도](#space_complexity)
