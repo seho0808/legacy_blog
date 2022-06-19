@@ -95,7 +95,9 @@ int partition(vector<int> &v, int left, int right) {
         while (pivot < v[j]) {
             j--;
         }
-        swap(v, i, j);
+        if (i < j) {
+            swap(v, i, j);
+        }
     }
     v[left] = v[j];
     v[j] = pivot;
@@ -105,9 +107,93 @@ int partition(vector<int> &v, int left, int right) {
 이 코드의 반례는 [5, 4, 3, 2, 1]이다. 첫 루프에서 2를 pivot으로 잡으면
 [2, 4, 3, 5, 1]이 된다. 여기서 i가 2에서 멈추고 j는 1에서 멈추기에
 pivot이 바뀌어버린다. 그러면 [1, 4, 3, 5, 2]가 된다. pivot이 바뀌면
-마지막에 16~17줄에서 while loop이 모두 끝나고 j랑 pivot이랑 스왑될 때 left에 다른 숫자가
-들어가 있어서 오류가 난다. 16~17을 swap(v, left, j)로 바꾸어도 마찬가지이다.
+마지막에 18~19줄에서 while loop이 모두 끝나고 j랑 pivot이랑 스왑될 때 left에 다른 숫자가
+들어가 있어서 오류가 난다. 18~19를 swap(v, left, j)로 바꾸어도 마찬가지이다.
+pivot을 left에서 빼내면 안되기에 left+1을 하는 방법을 생각해볼 수 있다.
 
+### 2. left+1
+```cpp
+int partition(vector<int> &v, int left, int right) {
+    int pivot_index = left + rand()%(right-left+1);
+    int pivot = v[pivot_index];
+    int i = left+1;
+    int j = right;
+    swap(v, pivot_index, left);
+    while (i < j) {
+        while (pivot > v[i]) {
+            i++;
+        }
+        while (pivot < v[j]) {
+            j--;
+        }
+        if (i < j) {
+            swap(v, i, j);
+        }
+    }
+    v[left] = v[j];
+    v[j] = pivot;
+    return j;
+}
+```
+left+1을 하면 얼핏보면 될 것 같지만, 반례가 있다. [1, 2 | 3 | 5, 4] (|는 파티션 나뉜 곳.) 여기서 [5, 4] 파티션의 5를
+pivot으로 잡고 left+1부터 i와 j를 비교하면 5와 4가 바뀌지 않고 끝나서 문제가 생긴다. 고로, 다른 해법을 찾아야한다.
+
+### 3. while(p>=v[i])i++;
+```cpp
+int partition(vector<int> &v, int left, int right) {
+    int pivot_index = left + rand()%(right-left+1);
+    int pivot = v[pivot_index];
+    int i = left+1;
+    int j = right;
+    swap(v, pivot_index, left);
+    while (i < j) {
+        while (pivot >= v[i]) {
+            i++;
+        }
+        while (pivot < v[j]) {
+            j--;
+        }
+        if (i < j) {
+            swap(v, i, j);
+        }
+    }
+    v[left] = v[j];
+    v[j] = pivot;
+    return j;
+}
+```
+i를 증가시킬 때 pivot과 같은 값들은 패스하도록 설계하면 2번의 테스트 케이스를 통과한다. 하지만, 이번에는
+[5, 2 | 6, 6, 6]과 같은 상태인 케이스에서 오류가 생긴다. i가 6의 가장 왼쪽 부터 시작했을 때, 같은 수는 모두 패스하기에
+배열 끝보다 더 많이 넘어가서 out of bounds가 된다. 그래서 i < j를 붙여주어야한다.
+
+### 4. i < j 추가
+
+```cpp
+int partition(vector<int> &v, int left, int right) {
+    int pivot_index = left + rand()%(right-left+1);
+    int pivot = v[pivot_index];
+    int i = left+1;
+    int j = right;
+    swap(v, pivot_index, left);
+    while (i < j) {
+        while (i < j && pivot >= v[i]) {
+            i++;
+        }
+        while (pivot < v[j]) {
+            j--;
+        }
+        if (i < j) {
+            swap(v, i, j);
+        }
+    }
+    v[left] = v[j];
+    v[j] = pivot;
+    return j;
+}
+```
+이렇게 i < j를 추가해주면 이제 모든 logical error은 통과이다.
+
+### 5. i와 j 순서 바꿔주기
 
 
 
