@@ -5,10 +5,25 @@ has_children: false
 ---
 ## Quick Sort (퀵소트 / 퀵정렬)
 
-이 글은 퀵정렬의 원리에 대해 설명하지 않는다. 복잡도와 최적화와 구현 방식들에 대해서만 이야기한다.
-
+이 글은 퀵정렬의 원리에 대해 설명하지 않는다.
+목차  
+1. 시간 복잡도
+	1. [Average-Case Time Complexity 증명](#ac_proof)
+2. [공간 복잡도](#space_complexity)
+3. [최적화 완료된 알고리즘](#3)
+4. [최적화 순서](#4)
+	1. [첫 어프로치](#4-1)
+	2. [left+1](#4-2)
+	3. [while(p>=v[i])i++;](#4-3)
+	4. [i < j 추가](#4-4)
+	5. [i와 j 순서 바꿔주기](#4-5)
+	6. [swap에 있는 i < j 제거](#4-6)
+5. [다른 풀이 세 가지](#5)
+	1. [pivot을 오른쪽으로 두기](#5-1)
+	2. [pivot을 가운데에 냅둔 상태에서 재귀](#5-2)
+	3. [메모리를 사용하는 퀵소트](#5-3)
 ## 시간 복잡도
-### Average-Case 증명
+### Average-Case 증명 <a name="ac_proof"></a>
 퀵소트 pivot이 오름차순 순서상 백분위 25%~75% 사이의 값을 계속 얻는다고 가정한다.  
 그러면 최악의 경우 1/4 3/4 두 개로 하나의 파티션이 쪼개진다.  
 ```
@@ -54,12 +69,12 @@ When the input is a random permutation, the pivot has a random rank, and so it i
 ```
 - [칸아카데미](https://www.khanacademy.org/computing/computer-science/algorithms/quick-sort/a/analysis-of-quicksort) 설명 좋아보인다. 나중에 참고하여 읽기.
 
-## 공간 복잡도
+## 공간 복잡도<a name="space_complexity"></a>
 각 파티션 마다 모두 하나의 배열을 포인터로 레퍼런싱하기 때문에 하나의 배열의 메모리 O(n)과 
 임시저장 메모리인 스택에 쌓이는 재귀함수들의 메모리 O(log(n))을 합쳐서 O(n+log(n)) = O(n)이 된다.
 [스택 참고](https://velog.io/@wonhee010/%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B5%AC%EC%A1%B0-feat.-%EC%9E%AC%EA%B7%80-vs-%EB%B0%98%EB%B3%B5%EB%AC%B8)
 
-## 최적화 완료된 알고리즘
+## 최적화 완료된 알고리즘<a name="3"></a>
 ```cpp
 #include <vector>
 #include <iostream>
@@ -129,8 +144,8 @@ int main() {
 ```
 백준 2750번으로 테스팅 가능하다. 이제 이 알고리즘의 최적화에 대해서 이야기한다.
 
-## 최적화 순서
-### 1. 첫 어프로치
+## 최적화 순서<a name="4"></a>
+### 1. 첫 어프로치<a name="4-1"></a>
 파티션 부분만 살펴본다. 랜덤으로 하나의 element를 가장 왼쪽과 교환한다.
 그리고 왼쪽에서 올라가는 i를 최대한 올려주고 j는 최대한 내려준다.
 ```cpp
@@ -163,7 +178,7 @@ pivot이 바뀌어버린다. 그러면 [1, 4, 3, 5, 2]가 된다. pivot이 바�
 들어가 있어서 오류가 난다. 18\~19를 swap(v, left, j)로 바꾸어도 마찬가지이다.
 pivot을 left에서 빼내면 안되기에 left+1을 하는 방법을 생각해볼 수 있다.
 
-### 2. left+1
+### 2. left+1 <a name="4-2"></a>
 ```cpp
 int partition(vector<int> &v, int left, int right) {
     int pivot_index = left + rand()%(right-left+1);
@@ -190,7 +205,7 @@ int partition(vector<int> &v, int left, int right) {
 left+1을 하면 얼핏보면 될 것 같지만, 반례가 있다. [1, 2 | 3 | 5, 4] (|는 파티션 나뉜 곳.) 여기서 [5, 4] 파티션의 5를
 pivot으로 잡고 left+1부터 i와 j를 비교하면 5와 4가 바뀌지 않고 끝나서 문제가 생긴다. 고로, 다른 해법을 찾아야한다.
 
-### 3. while(p>=v[i])i++;
+### 3. while(p>=v[i])i++; <a name="4-3"></a>
 ```cpp
 int partition(vector<int> &v, int left, int right) {
     int pivot_index = left + rand()%(right-left+1);
@@ -218,7 +233,7 @@ i를 증가시킬 때 pivot과 같은 값들은 패스하도록 설계하면 2�
 [5, 2 | 6, 6, 6]과 같은 상태인 케이스에서 오류가 생긴다. i가 6의 가장 왼쪽 부터 시작했을 때, 같은 수는 모두 패스하기에
 배열 끝보다 더 많이 넘어가서 out of bounds가 된다. 그래서 i < j를 붙여주어야한다.
 
-### 4. i < j 추가
+### 4. i < j 추가 <a name="4-4"></a>
 ```cpp
 int partition(vector<int> &v, int left, int right) {
     int pivot_index = left + rand()%(right-left+1);
@@ -246,7 +261,7 @@ int partition(vector<int> &v, int left, int right) {
 흥미롭게도, pivot을 왼쪽으로 안잡고 맨 오른쪽으로 잡게되면, 반대로 `while(i < j && pivot <= v[j]) j--;`를 해주어야한다.
 즉, decrment j 부분에 condition을 넣어주어야한다.
 
-### 5. i와 j 순서 바꿔주기
+### 5. i와 j 순서 바꿔주기 <a name="4-5"></a>
 ```cpp
 int partition(vector<int> &v, int left, int right) {
     int pivot_index = left + rand()%(right-left+1);
@@ -278,7 +293,7 @@ Complete Binary Tree는 $2^{h-1}$의 노드 수를 가진다. 우리는 Quick So
 평균적으로 Binary Tree의 분기가 생성된다고 볼 수 있다. 그렇기에, 평균적으로 노드 총 개수는 $2^{\log_2(n)}-1 = n-1$이고,
 이 개수만큼 비교 가 줄어들 수 있다.
 
-### 6. swap에 있는 i < j 제거
+### 6. swap에 있는 i < j 제거 <a name="4-6"></a>
 ```cpp
 int partition(vector<int> &v, int left, int right) {
     int pivot_index = left + rand()%(right-left+1);
@@ -304,12 +319,8 @@ int partition(vector<int> &v, int left, int right) {
 비교 연산을 많이 줄일 수 있다. 정확히는 한 번의 partition 마다 n번씩 줄일 수 있다.
 partition의 개수는 평균적으로 log(n)개니까 $n\log(n)$만큼의 비교 연산을 덜할 수 있다.
 
-## 퀵소트가 평균적으로 $n\log(n)$인 이유
-파티션 마다 n번 비교하는 건 당연할 것이다. 퀵소트는 평균적으로 파티션을 절반씩 나눈다고 볼 수 있기때문에 (정확히는 [절반, 절반]과 [한개, 전체-1] 만큼 나누는 것의
-산술 평균. => 데이터가 uniform distribution일 떄.) 트리 깊이가 log(n)정도라고 보면 nlog(n)이 된다.
-
-## 다른 풀이 세 가지
-### 1. pivot을 오른쪽으로 두기
+## 다른 풀이 세 가지 <a name="5"></a>
+### 1. pivot을 오른쪽으로 두기 <a name="5-1"></a>
 pivot을 오른쪽에 두면 위에서 쓴 조건과 반대로하면 된다. 그리고 18번 줄을 쓰든 comment되어 있는 16번 17번 줄을 쓰든 상관 없다.
 ```cpp
 int partition(vector<int> &v, int left, int right) {
@@ -333,7 +344,7 @@ int partition(vector<int> &v, int left, int right) {
     return j;
 }
 ```
-### 2. pivot을 가운데에 냅둔 상태에서 재귀
+### 2. pivot을 가운데에 냅둔 상태에서 재귀 <a name="5-2"></a>
 다른 곳에서 퍼온 코드인데, 맨 왼쪽이나 맨 오른쪽이랑 스왑을 하지 않고 돌린다는 점에서
 테스트 케이스를 생각할 때 훨씬 간단하고 좋은 알고리즘이라고 생각한다. 정확히 최적화 관점에서까지의
 시간 복잡도 차이는 모르겠다.
@@ -360,7 +371,7 @@ void quickSort(int i, int j)
 	quickSort(left,j);
 }
 ```
-### 3. 메모리를 사용하는 퀵소트
+### 3. 메모리를 사용하는 퀵소트 <a name="5-3"></a>
 우리가 구현한 퀵소트는 메모리를 n + log(n)만큼 사용한다. 아래 알고리즘은 2n + log(n)정도 사용하는 것으로 보여진다.
 ```
 //psuedocode
