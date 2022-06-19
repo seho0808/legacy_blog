@@ -81,7 +81,8 @@ int main() {
 ### 1. 첫 어프로치
 파티션 부분만 살펴본다. 랜덤으로 하나의 element를 가장 왼쪽과 교환한다.
 그리고 왼쪽에서 올라가는 i를 최대한 올려주고 j는 최대한 내려준다.
-```cpp
+{% capture some_var %}
+{% highlight cpp linenos %}
 int partition(vector<int> &v, int left, int right) {
     int pivot_index = left + rand()%(right-left+1);
     int pivot = v[pivot_index];
@@ -101,8 +102,16 @@ int partition(vector<int> &v, int left, int right) {
     v[j] = pivot;
     return j;
 }
+{% endhighlight %}
+{% endcapture %}
+{% include fix_linenos.html code=some_var %}
+이 코드의 반례는 [5, 4, 3, 2, 1]이다. 첫 루프에서 2를 pivot으로 잡으면 \
+[2, 4, 3, 5, 1]이 된다. 여기서 i가 2에서 멈추고 j는 1에서 멈추기에 \
+pivot이 바뀌어버린다. 그러면 [1, 4, 3, 5, 2]가 된다. pivot이 바뀌면
+마지막에 while loop이 모두 끝나고 j랑 pivot이랑 스왑될 때 left에 다른 숫자가
+들어가 있어서 오류가 난다.  swap(v, left, j)도 마찬가지이다.
 
-```
-이 코드의 반례는 [5, 4, 3, 2, 1]이다. 
+
+
 
 
