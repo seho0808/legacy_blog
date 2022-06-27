@@ -42,7 +42,7 @@ $$ \rightarrow k_n \geq \k_{n-1} + \k_{n-2}$$
 
 Hence, the speed of decrement of k's are at least the speed of fibonacci sequence in
 reverse order. Since a number in fibonacci sequence is obtained by some exponential function
-from binet equation, it takes log order of iteration to make $k_n$ zero.
+from binet equation, it takes log order of iteration to make $gcd(a, b)$ zero.
 
 
 #### Part 1
