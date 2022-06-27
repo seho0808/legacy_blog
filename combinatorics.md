@@ -3,7 +3,10 @@ title: Combinatorics
 parent: Algorithms
 has_child: false
 ---
-## Pascal's Triangle
+## Table of Contents
+- [Pascal's Triangle](#1)
+
+## Pascal's Triangle <a name="1"></a>
 #### Equation with binomial coefficients
 
 $$\binom{n}{k} = \binom{n-1}{k-1}\binom{n-1}{k}$$
