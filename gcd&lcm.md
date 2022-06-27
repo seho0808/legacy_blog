@@ -1,5 +1,5 @@
 ---
-title: gcd & lcm
+title: GCD & LCM
 parent: Algorithms
 has_children: false
 ---
