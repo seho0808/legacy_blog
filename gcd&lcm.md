@@ -19,6 +19,7 @@ int gcd(int a, int b){
 #### Euclidean Algorithm Proof
 #### Euclidean Algorithm Time Complexity Proof
 Statement:
+
 If $gcd(a, b)$ can be reduced to $gcd(x, 0)$ in $N$steps for some x,
 $a \geq f_{N+2}$ and $b \geq f_{N+1}$. $f_{N}$ is the $N$th fibonacci number.
 
@@ -31,6 +32,19 @@ $$ 2 \geq f_{1+2} \rightarrow a \geq f_{N+2} $$
 $$ 1 \geq f_{1+1} \rightarrow b \geq f_{N+1} $$
 
 Inductive Step:
+
+Assume that the statement holds true for $(N-1)$th step. Now we prove the statement for $N$th step is true.
+Since the statement for $(N-1)$th step is true, $gcd(b, a%b)$ can be reduced to $gcd(x, 0)$ in $N-1$ steps. Hence,
+
+$$b \geq f_{N-1+2} \rightarrow b \geq f_{N+1}$$
+
+$$a%b \geq f_{N-1+1} \rightarrow a%b \geq f_{N}$$
+
+Since $a%b$ is a remainder of $a/b$,
+
+$$a=floor(a/b)*b + a\%b$$
+
+
 
 
 
