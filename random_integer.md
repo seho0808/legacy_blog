@@ -1,5 +1,5 @@
 ---
-title: Generating a Random Integer Inside a Range in C++
+title: Random Integer in Range C++
 parent: Algorithms
 has_children: false
 ---
