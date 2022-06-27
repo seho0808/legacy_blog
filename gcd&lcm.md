@@ -24,7 +24,7 @@ int gcd(int a, int b){
 
 You can express a single loop of Euclidean Algorithm as,
 
-$$ a = floor(a, b)*b + a\%b \: (1)$$
+$$ a = floor(a, b)*b + a\%b \quad (1)$$
 
 Since $a \geq b$ was premise for $gcd$, $floor(a/b)\geq1$.
 
@@ -36,7 +36,7 @@ make a zero, we can see a pattern that looks like fibonacci sequence. We
 basically add two terms to get the next one. However, since $floor(a/b)\geq1$,
 we see that 
 
-$$ a \geq b + a\%b \: \because floor(a/b)\geq1 $$
+$$ a \geq b + a\%b \quad \because floor(a/b)\geq1 $$
 
 $$ \rightarrow k_n \geq k_{n-1} + k_{n-2}$$
 
