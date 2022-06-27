@@ -26,7 +26,7 @@ You can express a single loop of Euclidean Algorithm as,
 
 $$ a = floor(a, b)*b + a\%b \quad (1)$$
 
-Since $a \geq b$ was premise for $gcd$, $floor(a/b)\geq1$.
+Since $a \geq b$ was a premise for $gcd$, $floor(a/b)\geq1$.
 
 If we look at the equation (1), we realize that $a$ and $b$ are
 the first pair to be processed in the iteration, and $b$ and $a\%b$ is
