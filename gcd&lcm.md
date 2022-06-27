@@ -3,9 +3,11 @@ title: GCD & LCM
 parent: Algorithms
 has_children: false
 ---
-## GCD (최대공약수)
-#### Euclidean Algorithm Implementation
-유클리드 호제법(Euclidean Algorithm)을 이용. $GCD(a, b) = GCD(b, r)$ where $bx+r = a$ for some $x$. 
+## Euclidean Algorithm
+#### Equation
+$GCD(a, b) = GCD(b, r)$ where $bx+r = a$ for some $x$.
+#### Implementation
+If we iterate Euclidean Algorithm until $b$ is zero, we get $gcd(a, b)$ in $O(\log_2{min(a,b)})$.
 ```cpp
 int gcd(int a, int b){
 	while(b!=0){
@@ -16,9 +18,34 @@ int gcd(int a, int b){
 	return a;
 }
 ```
-#### Euclidean Algorithm Proof
-#### Euclidean Algorithm Time Complexity Proof
-<ins>Part 1</ins>
+## Euclidean Algorithm Proof
+## Euclidean Algorithm Time Complexity Proof
+#### Summary & Intuition
+
+You can express a single loop of Euclidean Algorithm as,
+
+$$ a = floor(a, b)*b + a\%b \: (1)$$
+
+Since $a\geqb$ was premise for $gcd$, $floor(a/b)\geq1$.
+
+If we look at the equation (1), we realize that $a$ and $b$ are
+the first pair to be processed in the iteration, and $b$ and $a\%b$ is
+the second pair to be processed. If we call $a$ as $k_{n}$ and $b$ as $k_{n-1}$ and
+$a\%b$ as $k_{n-2}$ where ${n} is assumed to be the iteration count required to
+make a zero, we can see a pattern that looks like fibonacci sequence. We
+basically add two terms to get the next one. However, since $floor(a/b)\geq1$,
+we see that 
+
+$$ a \geq b + a\%b \: \because floor(a/b)\geq1 $$
+
+$$ \rightarrow k_n \geq \k_{n-1} + \k_{n-2}$$
+
+Hence, the speed of decrement of k's are at least the speed of fibonacci sequence in
+reverse order. Since a number in fibonacci sequence is obtained by some exponential function
+from binet equation, it takes log order of iteration to make $k_n$ zero.
+
+
+#### Part 1
 
 Statement:
 
@@ -56,7 +83,7 @@ $$\rightarrow a \geq f_{N+2}$$
 
 The last equation is due to definition of fibonacci sequence. $\square$
 
-<ins>Part 2</ins>
+#### Part 2
 
 Binet Formula states
 
