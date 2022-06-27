@@ -62,7 +62,7 @@ Binet Formula states
 
 $$f_N =  \frac{(1+\sqrt{5})^N - (1-\sqrt{5})^N}{2^N\sqrt{5}} \rightarrow f_N ≈ ∅^N $$$
 
-$$N ≈ \log_{∅}{f_N}$$
+$$\rightarrow N ≈ \log_{∅}{f_N}$$
 
 where ∅≈1.618. We can see from Part 1, that
 
