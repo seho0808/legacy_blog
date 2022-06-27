@@ -5,6 +5,7 @@ has_child: false
 ---
 ## Pascal's Triangle
 #### Equation with binomial coefficients
+
 $$\binom{n}{k} = \binom{n-1}{k-1}\binom{n-1}{k}$$
 #### Proof (combinatorial version)
 
