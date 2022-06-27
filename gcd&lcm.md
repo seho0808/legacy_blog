@@ -29,10 +29,10 @@ $$ a = floor(a, b)*b + a\%b \quad (1)$$
 Since $a \geq b$ was a premise for $gcd$, $floor(a/b)\geq1$.
 
 If we look at the equation (1), we realize that $a$ and $b$ are
-the first pair to be processed in the iteration, and $b$ and $a\%b$ is
+the first pair to be processed in the iteration, and $b$ and $a\%b$ are
 the second pair to be processed. If we call $a$ as $k_{n}$ and $b$ as $k_{n-1}$ and
 $a\%b$ as $k_{n-2}$ where $n$ is assumed to be the iteration count required to
-make a zero, we can see a pattern that looks like fibonacci sequence. We
+make $gcd(a, b)$ zero, we can see a pattern that looks like a fibonacci sequence. We
 basically add two terms to get the next one. However, since $floor(a/b)\geq1$,
 we see that 
 
@@ -45,7 +45,7 @@ reverse order. Since a number in fibonacci sequence is obtained by some exponent
 from binet equation, it takes log order of iteration to make $gcd(a, b)$ zero.
 However, I still haven't figured out why someone would take the minimum of $a$ and $b$ instead of
 just $b$ in the equation $O(\log{min(a,b)})$ since $a \geq b$ is the premise, and which means
-$\log{min(a,b)} = \log{b}$
+$\log{min(a,b)} = \log{b}$.
 
 
 #### Part 1
