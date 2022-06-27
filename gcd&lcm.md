@@ -26,12 +26,12 @@ You can express a single loop of Euclidean Algorithm as,
 
 $$ a = floor(a, b)*b + a\%b \: (1)$$
 
-Since $a\geqb$ was premise for $gcd$, $floor(a/b)\geq1$.
+Since $a \geq b$ was premise for $gcd$, $floor(a/b)\geq1$.
 
 If we look at the equation (1), we realize that $a$ and $b$ are
 the first pair to be processed in the iteration, and $b$ and $a\%b$ is
 the second pair to be processed. If we call $a$ as $k_{n}$ and $b$ as $k_{n-1}$ and
-$a\%b$ as $k_{n-2}$ where ${n} is assumed to be the iteration count required to
+$a\%b$ as $k_{n-2}$ where $n$ is assumed to be the iteration count required to
 make a zero, we can see a pattern that looks like fibonacci sequence. We
 basically add two terms to get the next one. However, since $floor(a/b)\geq1$,
 we see that 
@@ -110,7 +110,7 @@ $$\therefore O(N) = O(N+1) = log(min(a,b))\square$$
 
 
 
-## LCM (최소공배수)
+## LCM
 #### Equation
 $$LCM(a, b) = \frac{a \times b}{GCD(a, b)}$$
 #### Implementation
