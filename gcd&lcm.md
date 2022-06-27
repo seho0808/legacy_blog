@@ -19,6 +19,38 @@ int gcd(int a, int b){
 }
 ```
 ## Euclidean Algorithm Proof
+
+$$a = Gx_1$$
+
+$$b = Gx_2$$
+
+Assume $x_1$ and $x_2$ are coprime. Then,
+
+$$ a = b*q + r $$
+
+$$\rightarrow r = a - b*q = Gx_1 - Gx_2*q = G(x_1 - x_2*q) = Gx_3$$
+
+$$\therefore r = Gx_3$$
+
+In order for $gcd(a, b) = gcd(b, r)$ to be true, we need to show that $G$ is also
+the $gcd$ for $r$ and $b$. We use proof by contradiction from here.
+Assume that $b$ and $r$ are not coprime. Then, there has to be a $gcd$ $G_2$.
+
+$$b = G_2k \quad (1)$$
+
+$$r = G_2k$$
+
+$$\rightarrow a-bq = G_2k $$
+
+$$\rightarrow a-G_2kq = G_2k $$
+
+$$\rightarrow a = G_2(k+kq) \quad (2)$$
+
+By equation (1) and (2), we see that $a$ and $b$ have some common divisor $G_2$.
+This makes $a$ and $b$ not coprime, which is a contradiction. Hence, $b$ and $r$ are coprime.
+Therefore, $gcd(a, b) = gcd(b, r)$. 
+
+
 ## Euclidean Algorithm Time Complexity Proof
 #### Summary & Intuition
 
