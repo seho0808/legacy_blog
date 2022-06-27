@@ -18,6 +18,8 @@ int gcd(int a, int b){
 ```
 #### Euclidean Algorithm Proof
 #### Euclidean Algorithm Time Complexity Proof
+<ins>Part 1</ins>
+
 Statement:
 
 If $gcd(a, b)$ can be reduced to $gcd(x, 0)$ in $N$steps for some x,
@@ -38,11 +40,38 @@ Since the statement for $(N-1)$th step is true, $gcd(b, a%b)$ can be reduced to 
 
 $$b \geq f_{N-1+2} \rightarrow b \geq f_{N+1}$$
 
-$$a%b \geq f_{N-1+1} \rightarrow a%b \geq f_{N}$$
+$$a\%b \geq f_{N-1+1} \rightarrow a\%b \geq f_{N}$$
 
-Since $a%b$ is a remainder of $a/b$,
+Since $a\%b$ is a remainder of $a/b$,
 
 $$a=floor(a/b)*b + a\%b$$
+
+From above result and that $a \geq b$,
+
+$$a \geq b + (a\%b)$$
+
+$$\rightarrow a \geq f_{N+1} + f_N$$
+
+$$\rightarrow a \geq f_{N+2}$$
+
+The last equation is due to definition of fibonacci sequence. \square
+
+<ins>Part 2</ins>
+
+Binet Formula states
+
+$$f_N =  \frac{(1+\sqrt{5})^N - (1-\sqrt{5})^N}{2^N\sqrt{5}} \wedge f_N ≈ ∅^N $$$
+
+$$N ≈ \log_{∅}{f_N}$$
+
+where ∅≈1.618. We can see from Part 1, that
+
+$$a \geq f_{N+2} \wedge b \geq f_{N+1}$$
+$$\rightarrow f_{N+1} ≈ min(a,b)$$
+$$\rightarrow N+1 ≈ \log_{∅}{min(a,b)}$$
+$$\therefore O(N) = O(N+1) = log(min(a,b))\square$$
+
+
 
 
 
