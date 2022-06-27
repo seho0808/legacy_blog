@@ -67,15 +67,12 @@ $$N ≈ \log_{∅}{f_N}$$
 where ∅≈1.618. We can see from Part 1, that
 
 $$a \geq f_{N+2} \wedge b \geq f_{N+1}$$
+
 $$\rightarrow f_{N+1} ≈ min(a,b)$$
+
 $$\rightarrow N+1 ≈ \log_{∅}{min(a,b)}$$
+
 $$\therefore O(N) = O(N+1) = log(min(a,b))\square$$
-
-
-
-
-
-
 
 [Original Source GeeksForGeeks Proof](https://www.geeksforgeeks.org/time-complexity-of-euclidean-algorithm/) 
 
