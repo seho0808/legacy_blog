@@ -54,7 +54,7 @@ $$\rightarrow a \geq f_{N+1} + f_N$$
 
 $$\rightarrow a \geq f_{N+2}$$
 
-The last equation is due to definition of fibonacci sequence. \square
+The last equation is due to definition of fibonacci sequence. $\square$
 
 <ins>Part 2</ins>
 
