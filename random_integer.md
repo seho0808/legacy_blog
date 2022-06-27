@@ -1,5 +1,5 @@
 ---
-title: Random Integer in Range C++
+title: Random Range Int C++
 parent: Algorithms
 has_children: false
 ---
