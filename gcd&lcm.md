@@ -38,7 +38,7 @@ we see that
 
 $$ a \geq b + a\%b \: \because floor(a/b)\geq1 $$
 
-$$ \rightarrow k_n \geq \k_{n-1} + \k_{n-2}$$
+$$ \rightarrow k_n \geq k_{n-1} + k_{n-2}$$
 
 Hence, the speed of decrement of k's are at least the speed of fibonacci sequence in
 reverse order. Since a number in fibonacci sequence is obtained by some exponential function
