@@ -43,6 +43,9 @@ $$ \rightarrow k_n \geq k_{n-1} + k_{n-2}$$
 Hence, the speed of decrement of k's are at least the speed of fibonacci sequence in
 reverse order. Since a number in fibonacci sequence is obtained by some exponential function
 from binet equation, it takes log order of iteration to make $gcd(a, b)$ zero.
+However, for I haven't figured out why someone would take minimum of $a$ and $b$ instead of
+just $b$ in the equation $O(\log{min(a,b)})$ since $a \geq b$ is the premise, and which means
+$\log{min(a,b)} = \log{b}$
 
 
 #### Part 1
