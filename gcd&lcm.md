@@ -17,6 +17,10 @@ int gcd(int a, int b){
 }
 ```
 #### Euclidean Algorithm Time Complexity Proof
+The [actual proof](https://www.geeksforgeeks.org/time-complexity-of-euclidean-algorithm/) is hard,
+so we will see how to get the intuition. I followed the process from [a stackoverflow answer](https://stackoverflow.com/a/3981010).
+
+
 
 
 
@@ -33,9 +37,13 @@ int lcm(int a, int b) {
 #### Explanation (not a full proof)
 Let $L$ be $LCM(a, b)$. Let $G$ be $GCD(a, b)$. Then,
 $$a = Gx_1$$
+
 $$b = Gx_2$$
+
 $$a*b = G^2x_1x_2$$
+
 $$a*b/G = Gx_1x_2 = LCM(a, b)$$
+
 $x_1$ and $x_2$ are coprime by definition of gcd. Hence,
 smallest possible multiples of $Gx_1$ and $Gx_2$ to acheive same number 
 are $x_2$ and $x_1$ respectively. That is, $LCM(a, b) = Gx_1x_2$
