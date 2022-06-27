@@ -16,9 +16,20 @@ int gcd(int a, int b){
 	return a;
 }
 ```
+#### Euclidean Algorithm Proof
 #### Euclidean Algorithm Time Complexity Proof
+Statement:
+If $gcd(a, b)$ can be reduced to $gcd(x, 0)$ in $N$steps for some x,
+$a \geq f_{N+2}$ and $b \geq f_{N+1}$. $f_{N}$ is the $N$th fibonacci number.
+
 Base Case:
-$$a\geq  $$
+
+Assume $a=2$, $b=1$. $gcd(2,1)$ becomes $gcd(1,0)$ in one step. Hence, $N=1$. 
+
+$$ 2 \geq f_{1+2} \rightarrow a \geq f_{N+2} $$
+
+$$ 1 \geq f_{1+1} \rightarrow b \geq f_{N+1} $$
+
 Inductive Step:
 
 
@@ -43,6 +54,7 @@ int lcm(int a, int b) {
 ```
 #### Proof
 Let $L$ be $LCM(a, b)$. Let $G$ be $GCD(a, b)$. Then,
+
 $$a = Gx_1$$
 
 $$b = Gx_2$$
@@ -53,5 +65,5 @@ $$(a*b)/G = Gx_1x_2 = LCM(a, b)$$
 
 $x_1$ and $x_2$ are coprime by definition of gcd. Hence,
 smallest possible multiples of $Gx_1$ and $Gx_2$ to acheive same number 
-are $x_2$ and $x_1$ respectively. That is, $LCM(a, b) = Gx_1x_2$ $\blacksquare$
+are $x_2$ and $x_1$ respectively. That is, $LCM(a, b) = Gx_1x_2$ $\square$
 
