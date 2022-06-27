@@ -60,7 +60,7 @@ The last equation is due to definition of fibonacci sequence. \square
 
 Binet Formula states
 
-$$f_N =  \frac{(1+\sqrt{5})^N - (1-\sqrt{5})^N}{2^N\sqrt{5}} \wedge f_N ≈ ∅^N $$$
+$$f_N =  \frac{(1+\sqrt{5})^N - (1-\sqrt{5})^N}{2^N\sqrt{5}} \rightarrow f_N ≈ ∅^N $$$
 
 $$N ≈ \log_{∅}{f_N}$$
 
