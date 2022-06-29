@@ -76,7 +76,7 @@ $$ \rightarrow k_n \geq k_{n-1} + k_{n-2}$$
 Hence, the speed of decrement of k's are at least the speed of fibonacci sequence in
 reverse order. Since a number in fibonacci sequence is obtained by some exponential function
 from binet equation, it takes log order of iteration to make $gcd(a, b)$ zero.
-Furthermore, $a<b$ could be true, but the proof below sets $a\geq b$ as a premise. When $b$ is greater,
+Furthermore, $a\lt b$ could be true, but the proof below sets $a\geq b$ as a premise. When $b$ is greater,
 it takes a single step for next $a_2$ to be greater than $b_2$, by the definition of remainder.
 
 
