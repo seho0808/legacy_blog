@@ -40,3 +40,5 @@ $$ nCk \% p = ((A \% p)* (B^{-1} \% p)) \% p $$
 By Fermat's Little Theorem, 
 
 $$ nCk \% p = (A*B^(p-2)) \% p (\because )$$
+
+[Source](https://cru6548.tistory.com/23)
