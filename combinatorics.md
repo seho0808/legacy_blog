@@ -24,3 +24,19 @@ When we do not include A, we have to choose $k$ number of balls from $n-1$ total
 ![alt text](https://t1.daumcdn.net/cfile/tistory/99F6A64C5A7F39B119)
 
 ## Binomial Coefficient Calculation <a name="2"></a>
+#### With Fermat's Little Theorem (O(logn))
+Assume $p$ is some prime number.
+
+$$ nCk \% p = \frac{n!}{k!(n-k)!} \% p$$
+
+Let $A=n! \wedge B=k!(n-k)!$.
+
+$$ nCk \% p = (A*B^{-1}) \% p $$
+
+By distributive property of modulo,
+
+$$ nCk \% p = ((A \% p)* (B^{-1} \% p)) \% p $$
+
+By Fermat's Little Theorem, 
+
+$$ nCk \% p = (A*B^(p-2)) \% p (\because )$$
