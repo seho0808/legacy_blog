@@ -37,6 +37,8 @@ $$ a = N/2 + N/4 + N/8 + N/16 + \cdots $$
 $$ b = N/3 + N/9 + N/27 + N/81 + \cdots $$
 
 $$ \cdots $$
+
+
 #### Explanation
 Let's take 5 for example. For step 1, every number with a single 5 as factor is counted. Then, for step 2,
 every number with two 5s as factor is counted. However, since 
