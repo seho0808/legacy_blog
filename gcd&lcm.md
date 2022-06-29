@@ -19,6 +19,7 @@ int gcd(int a, int b){
 }
 ```
 ## Euclidean Algorithm Proof
+Let $a$ and $b$ be some integer and $G$ be there greatest common divisor.
 
 $$a = Gx_1$$
 
@@ -48,7 +49,7 @@ $$\rightarrow a = G_2(k+kq) \quad (2)$$
 
 By equation (1) and (2), we see that $a$ and $b$ have some common divisor $G_2$.
 This makes $a$ and $b$ not coprime, which is a contradiction. Hence, $b$ and $r$ are coprime.
-Therefore, $gcd(a, b) = gcd(b, r)$. 
+Therefore, $gcd(a, b) = gcd(b, r)$. $\square$
 
 
 ## Euclidean Algorithm Time Complexity Proof
@@ -75,9 +76,8 @@ $$ \rightarrow k_n \geq k_{n-1} + k_{n-2}$$
 Hence, the speed of decrement of k's are at least the speed of fibonacci sequence in
 reverse order. Since a number in fibonacci sequence is obtained by some exponential function
 from binet equation, it takes log order of iteration to make $gcd(a, b)$ zero.
-Furthermore, I still haven't figured out why someone would take the minimum of $a$ and $b$ instead of
-just $b$ in the equation $O(\log{min(a,b)})$ since $a \geq b$ is the premise, and which means
-$\log{min(a,b)} = \log{b}$.
+Furthermore, $a<b$ could be true, but the proof below sets $a\geq b$ as a premise. When $b$ is greater,
+it takes a single step for next $a_2$ to be greater than $b_2$, by the definition of remainder.
 
 
 #### Part 1
