@@ -5,6 +5,7 @@ has_child: false
 ---
 ## Table of Contents
 - [Pascal's Triangle](#1)
+- [Binomial Coefficient Calculation](#2)
 
 ## Pascal's Triangle <a name="1"></a>
 #### Equation with binomial coefficients
@@ -21,3 +22,5 @@ When we do not include A, we have to choose $k$ number of balls from $n-1$ total
 #### Visualization
 
 ![alt text](https://t1.daumcdn.net/cfile/tistory/99F6A64C5A7F39B119)
+
+## Binomial Coefficient Calculation <a name="2"></a>
