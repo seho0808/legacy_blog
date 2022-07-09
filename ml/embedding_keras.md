@@ -19,13 +19,20 @@ $$X_1 = \begin{bmatrix}
 \end{bmatrix}$$
 
 $$W_1 = \begin{bmatrix}
-w_11 & w_12 & w_13 & w_14 & w_15\\
-w_21 & w_22 & w_23 & w_24 & w_25\\
-w_31 & w_32 & w_33 & w_34 & w_35\\
+w_{11} & w_{12} & w_{13} & w_{14} & w_{15}\\
+w_{21} & w_{22} & w_{23} & w_{24} & w_{25}\\
+w_{31} & w_{32} & w_{33} & w_{34} & w_{35}\\
 \end{bmatrix}$$
 
 Then, we multiply $W_1$ and $X_1$ during feed forward phase.
 
 $$
-X_1W_1
+Y_1 = X_1W_1 = \begin{bmatrix}
+w_{21} & w_{22} & w_{23} & w_{24} & w_{25}\\
+w_{31} & w_{32} & w_{33} & w_{34} & w_{35}\\
+\end{bmatrix}
 $$
+
+We can simply see that $Y_1$precisely holds exact same rows from $W_1$. Since one-hot-encoding basically captures a single
+row of $W_1$, there is no need to multiply all the zeros. The difference between Embedding Layers and Dense Layers lie
+in the fact that Embedding Layers neglect all the unneccessary zeros to be computed.
