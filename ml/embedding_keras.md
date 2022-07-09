@@ -33,6 +33,6 @@ w_{31} & w_{32} & w_{33} & w_{34} & w_{35}\\
 \end{bmatrix}
 $$
 
-We can simply see that $Y_1$precisely holds exact same rows from $W_1$. Since one-hot-encoding basically captures a single
+We can simply see that $Y_1$ precisely holds exact same rows from $W_1$. Since one-hot-encoding basically captures a single
 row of $W_1$, there is no need to multiply all the zeros. The difference between Embedding Layers and Dense Layers lie
 in the fact that Embedding Layers neglect all the unneccessary zeros to be computed.
