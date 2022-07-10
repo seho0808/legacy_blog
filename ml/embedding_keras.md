@@ -5,6 +5,7 @@ has_children: false
 ---
 
 ## Embedding Layer in Keras
+#### Embedding vs Dense
 Embedding Layer in Keras is no different from the Dense Layer. However, the calculation is faster.
 Let's say $X_1$ is the first input to train. Assume $X_1$ is one-hot-encoded.
 Weight matrix will be initialized with random variables, but the dimension will be what we specify it to be.
@@ -43,3 +44,10 @@ in the fact that Embedding Layers neglect all the unneccessary zeros to be compu
 index of rows in $W$ with numbers in $X'_1$.
 
 [Source](https://stackoverflow.com/questions/47868265/what-is-the-difference-between-an-embedding-layer-and-a-dense-layer)
+
+#### A Column of $W$ is a node.
+From the $W$ above, the number of columns is the number of output matrices. So in this case, 5 matrices are generated from $WX$.
+More precisely, a single hidden layer node's weight corresponds to a column of $W$. First column of $W$ is the first hidden node's
+weights. Therefore, if there are 5 columns in $W$, it is natural to think that there are 5 nodes and 5 output matrices to be passed
+to the next layer of DNN.
+
