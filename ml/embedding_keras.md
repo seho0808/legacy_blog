@@ -9,8 +9,7 @@ Embedding Layer in Keras is no different from the Dense Layer. However, the calc
 Let's say $X_1$ is the first input to train. Assume $X_1$ is one-hot-encoded.
 Weight matrix will be initialized with random variables, but the dimension will be what we specify it to be.
 For example, since $X_1$, the input matrix, has input dimension of 2x3, weight matrix has to have 3x"something"
-dimension. We specify the "something" part by `model.add(tf.keras.layers.Embedding(3, something, input_length=10))`
-If we want the something to be 5, which maps a 3 dimension bag of words one-hot-encoded matrix to that of a 5 dimension,
+dimension. If we want the "something" to be 5, which maps a 3 dimension bag of words one-hot-encoded matrix to that of a 5 dimension,
 this would make the weights multiplied in the Embedding Layer to be of size 3x5.
 
 $$X_1 = \begin{bmatrix}
@@ -35,4 +34,7 @@ $$
 
 We can simply see that $Y_1$ precisely holds exact same rows from $W_1$. Since one-hot-encoding basically captures a single
 row of $W_1$, there is no need to multiply all the zeros. The difference between Embedding Layers and Dense Layers lie
-in the fact that Embedding Layers neglect all the unneccessary zeros to be computed.
+in the fact that Embedding Layers neglect all the unneccessary zeros to be computed. In fact, Embedding Layers simply call the
+index of rows in $W$ even without one-hot encoding from integer encoded data.
+
+[Source](https://stackoverflow.com/questions/47868265/what-is-the-difference-between-an-embedding-layer-and-a-dense-layer)
